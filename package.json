@@ -1,0 +1,23 @@
+{
+  "name": "vc100",
+  "version": "1.0.0",
+  "description": "",
+  "main": "vc100.ts",
+  "scripts": {
+    "start": "ts-node src/vc100.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grichardsldn/vc100.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grichardsldn/vc100/issues"
+  },
+  "homepage": "https://github.com/grichardsldn/vc100#readme",
+  "dependencies": {
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
