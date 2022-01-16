@@ -1,10 +1,11 @@
-type A = {
-  name: string,
-  id: string,
-}
+import express from 'express';
 
-const a: A = {
-  name: 'hello',
-  id: 'world',
-}
-console.log(a)
+const app = express()
+
+app.get("/", async (req: express.Request, res: express.Response) => {
+  console.log("call to / with query: " + JSON.stringify( req.query) )
+
+  res.send('hello world')
+})
+
+app.listen(3000)
