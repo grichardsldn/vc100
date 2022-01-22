@@ -35,6 +35,7 @@ app.get('/gridmono_1_1_1.ttf', (req, res) => {
   res.sendFile(__dirname + '/gridmono_1_1_1.ttf');
 });
 
-server.listen(3000, () => {
-  console.log('listening on *:3000');
+const port = 1664;
+server.listen(port, () => {
+  console.log(`listening on *:1664`);
 });
