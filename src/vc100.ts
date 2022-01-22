@@ -22,8 +22,17 @@ app.get("/background/:colour", async (req: express.Request, res: express.Respons
   res.send('ok')
 })
 
+app.get("/line/:line/:string", async (req: express.Request, res: express.Response) => {
+  io.emit('line', { line: req.params.line, string: req.params.string })
+  res.send('ok')
+})
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/gridmono_1_1_1.ttf', (req, res) => {
+  res.sendFile(__dirname + '/gridmono_1_1_1.ttf');
 });
 
 server.listen(3000, () => {

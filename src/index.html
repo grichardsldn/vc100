@@ -3,21 +3,35 @@
   <head>
     <title>vc100</title>
     <style>
-      body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      @font-face {
+      font-family: 'gridmono';
+      src: URL('gridmono_1_1_1.ttf') format('truetype');
+}
+      body { color: green; background-color: black; margin: 0; padding-left: 2rem; font-family: monospace; }
+      .screen {font-family: 'gridmono', Fallback, monospace; width: 100%; font-size: 1.9vw; margin:0;}
     </style>
   </head>
   <body>
+    <pre class='screen' id='screen'></pre>
     <ul id="messages"></ul>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io()
-
+      const screen = new Array(25).fill('');
       socket.on('background', function(msg) {
-    var item = document.createElement('li')
-    item.textContent = JSON.stringify(msg)
-    messages.appendChild(item)
-    document.body.style.backgroundColor = msg
+      document.body.style.backgroundColor = msg
   })
+    const render = (lines) => {
+      return lines.reduce((acc, cur) => acc.concat(`${cur}\n`), '');
+    }
+
+    socket.on('line', function(line) {
+      screen[line.line -1] = line.string;
+      console.log(line);
+      const screenElement = document.getElementById(`screen`);
+      screenElement.textContent = render(screen);
+  })
+
     </script>
   </body>
 </html>
