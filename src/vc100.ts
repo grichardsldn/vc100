@@ -1,6 +1,13 @@
 import express from 'express';
 
+const bodyParser = require('body-parser');
+//const url = require('url');
+//const querystring = require('querystring');
+
 const app = express()
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
@@ -22,8 +29,8 @@ app.get("/background/:colour", async (req: express.Request, res: express.Respons
   res.send('ok')
 })
 
-app.get("/line/:line/:string", async (req: express.Request, res: express.Response) => {
-  io.emit('line', { line: req.params.line, string: req.params.string })
+app.get("/line/:line", async (req: express.Request, res: express.Response) => {
+  io.emit('line', { line: req.params.line, string: req.query.msg })
   res.send('ok')
 })
 
