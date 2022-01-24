@@ -1,6 +1,6 @@
 const useStaffVersion = false;
 const LiveDepartureBoardService = require('ldbs-json');
-const token = "your-token-here";
+const token = process.env.API_KEY;
 
 const fetch = require('node-fetch');
 
