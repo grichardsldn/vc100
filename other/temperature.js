@@ -25,7 +25,7 @@ const tempNow = async (apiKep, locationId) => {
 const run = async () => {
   const summary = await tempNow(process.env.API_KEY,3672);
   console.log(summary);
-  fetch(`http://starbug1.local:1664/line/10?msg=${encodeURIComponent(summary)}`)
+  fetch(`http://starbug1.local:1664/line/10?msg=${encodeURIComponent(' ' + summary)}`)
 };
 
 run();
