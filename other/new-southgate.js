@@ -11,7 +11,7 @@ const options = {
 };
 
 const summarise = (s) => {
-  return ` P${s.platform} ${s.std} ${s.destination.location.locationName} ${s.etd}`;
+  return ` ${s.std} ${s.destination.location.locationName} ${s.etd}`;
 };
 
 // Now do the required query
