@@ -1,7 +1,7 @@
 
 const token = "your-token-here";
 
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 
 const tempNow = async (apiKep, locationId) => {
