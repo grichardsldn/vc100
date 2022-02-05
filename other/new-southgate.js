@@ -1,8 +1,8 @@
 const useStaffVersion = false;
-const LiveDepartureBoardService = require('ldbs-json');
+import LiveDepartureBoardService from 'ldbs-json';
 const token = process.env.API_KEY;
 
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 // Set up the options for the call
 const options = {
@@ -11,7 +11,7 @@ const options = {
 };
 
 const summarise = (s) => {
-  return ` P${s.platform} ${s.std} ${s.destination.location.locationName} ${s.etd}`;
+  return ` ${s.std} ${s.destination.location.locationName} ${s.etd}`;
 };
 
 // Now do the required query
