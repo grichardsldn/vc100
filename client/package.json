@@ -1,0 +1,19 @@
+{
+  "name": "vc100-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "tsc": "tsc",
+    "webpack": "webpack --config webpack.config.js --mode=development"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.4.1"
+  }
+}

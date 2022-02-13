@@ -35,11 +35,18 @@ app.get("/line/:line", async (req: express.Request, res: express.Response) => {
 })
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile('client/index.html', {'root': '../'});
 });
 
 app.get('/gridmono_1_1_1.ttf', (req, res) => {
-  res.sendFile(__dirname + '/gridmono_1_1_1.ttf');
+  res.sendFile('client/dist/include/gridmono_1_1_1.ttf', {'root': '../'});
+});
+
+app.get('/main.js', (req, res) => {
+  console.log('client/dist/main.js');
+  res.sendFile('client/dist/main.js', {'root': '../', headers: {
+      'content-type': "text/javascript",
+  }});
 });
 
 const port = 1664;

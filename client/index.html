@@ -19,27 +19,9 @@
   <body>
     <pre class='screen' id='screen'></pre>
     <ul id="messages"></ul>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io()
-      const screen = new Array(25).fill('');
-      socket.on('background', function(msg) {
-      document.body.style.backgroundColor = msg
-  })
-    const render = (lines) => {
-      return lines.reduce((acc, cur) => acc.concat(`${cur}\n`), '');
-    }
-
-    socket.on('line', function(line) {
-      screen[line.line -1] = line.string;
-      console.log(line);
-      const screenElement = document.getElementById(`screen`);
-      screenElement.textContent = render(screen);
-  })
-
-    </script>
+   
     <div class="msg" id="msg4" style="position: fixed;top: 1em;left: 18em;">This is message 3</div>
     <div class="msg" id="msg3" style="position: fixed;top: 1em;left: 15em;">This is message 3</div>
-
+    <script src="main.js"></script>
   </body>
 </html>
