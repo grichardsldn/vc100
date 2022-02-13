@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/gridmono_1_1_1.ttf', (req, res) => {
-  res.sendFile('client/dist/include/gridmono_1_1_1.ttf', {'root': '../'});
+  res.sendFile('client/include/gridmono_1_1_1.ttf', {'root': '../'});
 });
 
 app.get('/main.js', (req, res) => {
