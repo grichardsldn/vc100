@@ -1,9 +1,5 @@
 import {io,Socket} from "socket.io-client"
-
-type LineCommand = {
-  line: number,
-  string: string,
-}
+import { LineCommand } from '~shared/vc100';
 
 var socket = io()
 const screen = new Array<string>(25).fill('');

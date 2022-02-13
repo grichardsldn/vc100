@@ -5,7 +5,9 @@
   "main": "client.js",
   "scripts": {
     "tsc": "tsc",
-    "webpack": "webpack --config webpack.config.js --mode=development"
+    "webpack": "webpack --config webpack.config.js --mode=development",
+    "clean": "rm -rf dist ; rm -rf compiled",
+    "build": "npm run clean; npm run tsc ; npm run webpack"
   },
   "author": "",
   "license": "ISC",

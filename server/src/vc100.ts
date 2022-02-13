@@ -1,4 +1,5 @@
-import express from 'express';
+import express from 'express'
+import {LineCommand} from "~shared/vc100"
 
 const bodyParser = require('body-parser');
 //const url = require('url');
@@ -30,7 +31,7 @@ app.get("/background/:colour", async (req: express.Request, res: express.Respons
 })
 
 app.get("/line/:line", async (req: express.Request, res: express.Response) => {
-  io.emit('line', { line: req.params.line, string: req.query.msg })
+  io.emit('line', { line: Number(req.params.line), string: req.query.msg } as LineCommand)
   res.send('ok')
 })
 
