@@ -1,5 +1,5 @@
 import express from 'express'
-import {LineCommand} from "~shared/vc100"
+import {LineCommand, DisplayMessage} from "~shared/vc100"
 
 const bodyParser = require('body-parser');
 //const url = require('url');
@@ -32,6 +32,25 @@ app.get("/background/:colour", async (req: express.Request, res: express.Respons
 
 app.get("/line/:line", async (req: express.Request, res: express.Response) => {
   io.emit('line', { line: Number(req.params.line), string: req.query.msg } as LineCommand)
+  res.send('ok')
+})
+
+app.get("/test", async (req: express.Request, res: express.Response) => {
+  io.emit('DISPLAY_MESSAGE', 
+  [ 
+    {
+      rowIndex: 0,
+      columnIndex: 0,
+      message: "Hello world",
+      boxLength: 20,
+    },
+    {
+      rowIndex: 5,
+      columnIndex: 5,
+      message: "Hello world2",
+      boxLength: 20,
+    },
+  ] as DisplayMessage[])
   res.send('ok')
 })
 

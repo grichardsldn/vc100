@@ -3,3 +3,9 @@ export type LineCommand = {
   string: string,
 }
 
+export type DisplayMessage = {
+  rowIndex: number,
+  columnIndex: number,
+  message: string,
+  boxLength: number,
+}
