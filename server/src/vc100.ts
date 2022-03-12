@@ -41,14 +41,26 @@ app.get("/test", async (req: express.Request, res: express.Response) => {
     {
       rowIndex: 0,
       columnIndex: 0,
-      message: "Hello world",
-      boxLength: 20,
+      message: "MMMHello world",
+      boxLength: 15,
+    },
+    {
+      rowIndex: 1,
+      columnIndex: 1,
+      message: "A",
+      boxLength: 1,
     },
     {
       rowIndex: 5,
       columnIndex: 5,
       message: "Hello world2",
       boxLength: 20,
+    },
+    {
+      rowIndex: 6,
+      columnIndex: 4,
+      message: "AB",
+      boxLength: 2,
     },
   ] as DisplayMessage[])
   res.send('ok')

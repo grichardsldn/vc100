@@ -15,8 +15,9 @@ const drawMessage = (displayMessage: DisplayMessage): void => {
   const node = document.createElement("div")
   node.style.position = "fixed"
   node.className = 'msg'
-  node.style.top = `${displayMessage.columnIndex}em`
-  node.style.left = `${displayMessage.rowIndex}em`
+  node.style.top = `${displayMessage.rowIndex}rem`
+  node.style.left = `${displayMessage.columnIndex}rem`
+  node.style.width = `${displayMessage.boxLength}rem`
 
   // style="position: fixed;top: 1em;left: 15em;"
   const textnode = document.createTextNode(displayMessage.message)
