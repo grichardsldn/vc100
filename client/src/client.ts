@@ -1,17 +1,32 @@
 import {io,Socket} from "socket.io-client"
 import { LineCommand, DisplayMessage } from '~shared/vc100';
 
+const clearMessages = () => {
+  const messagesElement = document.getElementById("messages")
+  if (!messagesElement) {
+    console.error(`clearMessages: could not get messages element`)
+    return
+  }
+  messagesElement.textContent = '';
+}
+
 
 const drawMessage = (displayMessage: DisplayMessage): void => {
   const node = document.createElement("div")
   node.style.position = "fixed"
+  node.className = 'msg'
   node.style.top = `${displayMessage.columnIndex}em`
   node.style.left = `${displayMessage.rowIndex}em`
 
   // style="position: fixed;top: 1em;left: 15em;"
   const textnode = document.createTextNode(displayMessage.message)
   node.appendChild(textnode);
-  document.getElementById("messages")?.appendChild(node);
+  const messagesElement = document.getElementById("messages")
+  if (!messagesElement) {
+    console.error(`drawMessage: could not get messages element`)
+    return
+  }
+  messagesElement.appendChild(node);
 }
 
 var socket = io()
@@ -35,5 +50,6 @@ if (screenElement) {
 
 socket.on('DISPLAY_MESSAGE', function(displayMessages: DisplayMessage[]) {
   console.log(JSON.stringify(displayMessages, null,2))
+  clearMessages()
   displayMessages.forEach( dm => drawMessage(dm))
   })

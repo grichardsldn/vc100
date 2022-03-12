@@ -7,19 +7,16 @@
       font-family: 'gridmono';
       src: URL('gridmono_1_1_1.ttf') format('truetype');
 }
-      body { color: green; background-color: black; margin: 0; padding-left: 2rem; font-family: monospace; }
+      body { color: green; background-color: grey; margin: 0; padding-left: 2rem; font-family: monospace; }
       .screen {font-family: 'gridmono', Fallback, monospace; width: 100%; font-size: 1.9vw; margin:0;}
-      div.msg {
+      div .msg {
         color: white;
         background-color: black;
-        display: none;
       }
     </style>
   </head>
   <body>
     <pre class='screen' id='screen'></pre>
-    <ul id="messages"></ul>
-   
     <div class="msg" id="msg4" style="position: fixed;top: 1em;left: 18em;">This is message 3</div>
     <div class="msg" id="msg3" style="position: fixed;top: 1em;left: 15em;">This is message 3</div>
     <script src="main.js"></script>
