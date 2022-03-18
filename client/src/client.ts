@@ -1,7 +1,8 @@
 import {io,Socket} from "socket.io-client"
 import { LineCommand, DisplayMessage } from '~shared/vc100';
 
-const emFactor = 0.5
+const emFactorH = 0.5
+const emFactorV = 1.0
 
 const clearMessages = () => {
   const messagesElement = document.getElementById("messages")
@@ -17,9 +18,9 @@ const drawMessage = (displayMessage: DisplayMessage): void => {
   const node = document.createElement("div")
   node.style.position = "fixed"
   node.className = 'msg'
-  node.style.top = `${displayMessage.rowIndex * emFactor}rem`
-  node.style.left = `${displayMessage.columnIndex * emFactor}rem`
-  node.style.width = `${displayMessage.boxLength * emFactor}rem`
+  node.style.top = `${displayMessage.rowIndex * emFactorV}rem`
+  node.style.left = `${displayMessage.columnIndex * emFactorH}rem`
+  node.style.width = `${displayMessage.boxLength * emFactorV}rem`
 
   // style="position: fixed;top: 1em;left: 15em;"
   const textnode = document.createTextNode(displayMessage.message)
