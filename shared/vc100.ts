@@ -13,4 +13,5 @@ export type DisplayMessage = {
   message: string,
   boxLength: number,
   style: TextStyle,
+  colour: string,
 }

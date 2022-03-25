@@ -20,6 +20,7 @@ const drawMessage = (displayMessage: DisplayMessage): void => {
   node.className = `msg${(displayMessage.style == "BIG")?" big":""}` 
   node.style.top = `${displayMessage.rowIndex * emFactorV}rem`
   node.style.left = `${displayMessage.columnIndex * emFactorH}rem`
+  node.style.color = displayMessage.colour
   //node.style.width = `${displayMessage.boxLength * emFactorV * (displayMessage.style == Style.BIG?1:2)}rem`
 
   // style="position: fixed;top: 1em;left: 15em;"

@@ -44,6 +44,7 @@ app.get("/test", async (req: express.Request, res: express.Response) => {
       message: "MMMHello world",
       boxLength: 15,
       style: "NORMAL",
+      colour: "white",
     },
     {
       rowIndex: 1,
@@ -51,6 +52,7 @@ app.get("/test", async (req: express.Request, res: express.Response) => {
       message: "A",
       boxLength: 1,
       style: "NORMAL",
+      colour: "red",
     },
     {
       rowIndex: 5,
@@ -58,6 +60,7 @@ app.get("/test", async (req: express.Request, res: express.Response) => {
       message: "Hello world2",
       boxLength: 20,
       style: "NORMAL",
+      colour: "blue",
     },
     {
       rowIndex: 6,
@@ -65,6 +68,7 @@ app.get("/test", async (req: express.Request, res: express.Response) => {
       message: "AB",
       boxLength: 2,
       style: "BIG",
+      colour: "pink",
     },
   ] as DisplayMessage[])
   res.send('ok')
