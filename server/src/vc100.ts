@@ -1,5 +1,5 @@
 import express from 'express'
-import {LineCommand, DisplayMessage} from "~shared/vc100"
+import {LineCommand, DisplayMessage, TextStyle} from "~shared/vc100"
 
 const bodyParser = require('body-parser');
 //const url = require('url');
@@ -43,24 +43,28 @@ app.get("/test", async (req: express.Request, res: express.Response) => {
       columnIndex: 0,
       message: "MMMHello world",
       boxLength: 15,
+      style: "NORMAL",
     },
     {
       rowIndex: 1,
       columnIndex: 1,
       message: "A",
       boxLength: 1,
+      style: "NORMAL",
     },
     {
       rowIndex: 5,
       columnIndex: 5,
       message: "Hello world2",
       boxLength: 20,
+      style: "NORMAL",
     },
     {
       rowIndex: 6,
       columnIndex: 4,
       message: "AB",
       boxLength: 2,
+      style: "BIG",
     },
   ] as DisplayMessage[])
   res.send('ok')
