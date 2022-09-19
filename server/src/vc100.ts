@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 
 let messages: Messages.Message[] = [];
 
+const DEFAULT_COLOUR = 'yello'
+
 //const url = require('url');
 //const querystring = require('querystring');
 
@@ -35,7 +37,7 @@ app.get("/background/:colour", async (req: express.Request, res: express.Respons
 
 app.get("/line/:line", async (req: express.Request, res: express.Response) => {
   console.log({GDR: 'req', line: req.params.line, msg: req.query.msg})
-  io.emit('line', { line: Number(req.params.line), string: req.query.msg } as LineCommand)
+
   const message: Messages.Message = 
   {
     id: `line${req.params.line}`,
@@ -46,6 +48,30 @@ app.get("/line/:line", async (req: express.Request, res: express.Response) => {
       boxLength: (req.query.msg as string).length,
       style: 'NORMAL',
       colour: 'green',
+    },
+  }
+  messages = Messages.updateMessage(messages, message)
+
+  io.emit('DISPLAY_MESSAGE', Messages.displayMessages(messages))
+  res.send('ok')
+})
+
+// row, col, msg, len, style, colour
+app.get("/id/:id", async (req: express.Request, res: express.Response) => {
+  console.log({GDR: 'id', params: req.params, query: req.query})
+
+  const msg = req.query.msg as string|| ''
+  const boxLength = Number( req?.query?.len || '0')
+  const message: Messages.Message = 
+  {
+    id: `id${req.params.id}`,
+    displayMessage: {
+      rowIndex:Number(req.query.row || '0'),
+      columnIndex: Number(req.query.col || '0'),
+      message: msg,
+      boxLength:  boxLength || msg.length,
+      style: req?.query?.style === 'BIG' ? 'BIG':'NORMAL',
+      colour: (!!req?.query?.colour) ? req?.query?.colour as string: DEFAULT_COLOUR,
     },
   }
   messages = Messages.updateMessage(messages, message)
