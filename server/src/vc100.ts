@@ -1,7 +1,10 @@
 import express from 'express'
 import {LineCommand, DisplayMessage, TextStyle} from "~shared/vc100"
-
+import * as Messages from './messages'
 const bodyParser = require('body-parser');
+
+let messages: Messages.Message[] = [];
+
 //const url = require('url');
 //const querystring = require('querystring');
 
@@ -16,7 +19,7 @@ const io = new Server(server);
 
 io.on('connection', (socket: any) => {
   console.log('a user connected');
-  io.emit('message', 'hi');
+  io.emit('DISPLAY_MESSAGE', Messages.displayMessages(messages))
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
@@ -31,7 +34,23 @@ app.get("/background/:colour", async (req: express.Request, res: express.Respons
 })
 
 app.get("/line/:line", async (req: express.Request, res: express.Response) => {
+  console.log({GDR: 'req', line: req.params.line, msg: req.query.msg})
   io.emit('line', { line: Number(req.params.line), string: req.query.msg } as LineCommand)
+  const message: Messages.Message = 
+  {
+    id: `line${req.params.line}`,
+    displayMessage: {
+      rowIndex:Number(req.params.line),
+      columnIndex: 0,
+      message: req.query.msg as string|| '',
+      boxLength: (req.query.msg as string).length,
+      style: 'NORMAL',
+      colour: 'green',
+    },
+  }
+  messages = Messages.updateMessage(messages, message)
+
+  io.emit('DISPLAY_MESSAGE', Messages.displayMessages(messages))
   res.send('ok')
 })
 
