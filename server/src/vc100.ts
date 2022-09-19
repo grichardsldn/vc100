@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 let messages: Messages.Message[] = [];
 
-const DEFAULT_COLOUR = 'yello'
+const DEFAULT_COLOUR = 'yellow'
 
 //const url = require('url');
 //const querystring = require('querystring');
