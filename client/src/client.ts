@@ -58,3 +58,61 @@ socket.on('DISPLAY_MESSAGE', function(displayMessages: DisplayMessage[]) {
   clearMessages()
   displayMessages.forEach( dm => drawMessage(dm))
   })
+
+const isFullScreen = () => {
+  let d = document as any
+  var fullscreenElement = d.fullscreenElement || d.mozFullScreenElement ||
+    d.webkitFullscreenElement || d.msFullscreenElement;
+  return !!fullscreenElement
+}
+
+const requestFullscreen = () => {
+  let docElm = document.documentElement as any
+  if (docElm.requestFullscreen) {
+    docElm.requestFullscreen()
+  }
+  else if (docElm.mozRequestFullScreen) {
+      docElm.mozRequestFullScreen()
+  }
+  else if (docElm.webkitRequestFullScreen) {
+      docElm.webkitRequestFullScreen()
+  }
+  else if (docElm.msRequestFullscreen) {
+      docElm.msRequestFullscreen()
+  } else {
+    console.log(`No requestFullscreen found`)
+  }
+}
+
+const exitFullscreen = () => {
+  let d = document as any
+    if (document.exitFullscreen) {
+      document.exitFullscreen()
+    } else if (d.mozExitFullscreen) {
+      d.mozExitFullscreen()
+    } else if (d.webkitExitFullscreen) {
+      d.webkitExitFullscreen()
+    } else if (d.msExitFullscreen) {
+      d.msExitFullscreen()
+    }
+} 
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  const button = document.getElementById('messages')
+  if (!button) {
+    console.log(`Element for fullscreen not found`)
+    return
+  }
+
+  button.addEventListener('click', () => {
+    console.log(`GDR: click!`)
+    let docElm = document.documentElement as any
+    if (!isFullScreen()) {
+      requestFullscreen()
+    } else {
+      exitFullscreen()
+    }
+  })
+});
+
+
