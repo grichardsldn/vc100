@@ -2,4 +2,5 @@
 compiled
 **/dist
 compiled
+server/nohup.out
 
