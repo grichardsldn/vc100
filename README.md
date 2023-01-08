@@ -1,24 +1,24 @@
 # vc100
 
+Authless row/column text-based display server for server/browser.  Click for fullscreen on devices that allow it.
+
+## Post message interface
+
+query params
+
+* id - identify this text, messages for the same id replace earlier messages.
+* msg - the text to display.
+* row - zero-indexed row number.
+* col - column number, defaults to 0.
+* len - number of characters to block-out, default is the length of the message.
+* style - NORMAL or BIG (double size). Defaults to NORMAL.
+* colour - css colour, defaults to #b59900.
+
+## Simplified interface
+
 ```
-curl localhost:1664:/line/5?msg="hello@20world"
+curl localhost:1664:/line/5?msg="this message goes on line 2"
 curl -G --data-urlencode "msg=`uptime`" localhost:1664/line/1
 ```
 
-# bundled assets
 
-This article explains how to include fonts and css view webpack, at the moment
-this is just included by the server manually:
-
-https://webpack.js.org/guides/asset-management/
-
-# target interface
-
-- page state held in server
-- text colour
-- positioning in 80x25 grid
-- wallpaper definition in config
-- double size text
-- messages time out
-- messages length settable, pads with spaces
-- left/right/centre align?
